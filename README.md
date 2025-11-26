@@ -1,9 +1,7 @@
-#         Clyp Downloader
-
 Clyp has basically made their platform useless, but I wanted to download all of my old tracks.  
 The original script from **https://github.com/0x27** (shoutout to them) was written for Python 2 and broke with newer Clyp API changes.
 
-I updated and fixed it.
+I used it as a basis and added some stuff and fixed it.
 
 ## Changes
 - Batch downloading from a `.txt` list
