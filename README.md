@@ -1,38 +1,51 @@
-# clypdown
+#         Clyp Downloader
 
-## TL;DR  
-I was trying to download a tune from [clyp](https://clyp.it/) and the download button was not enabled. No fear, [the API](https://clyp.it/api) comes to the rescue and we can ignore this.
+Clyp has basically made their platform useless, but I wanted to download all of my old tracks.  
+The original script from **https://github.com/0x27** (shoutout to them) was written for Python 2 and broke with newer Clyp API changes.
 
-## How it was made...
-The process of how I created clypdown is documented fully [in this Steemit post](https://steemit.com/programming/@synapse/clypdown-tool-for-grabbing-music-from-clyp-it).
+I updated and fixed it.
 
-## Demo  
-Youtube vidya to come later or whatever, maybe once I add list mode.
+## Changes
+- Batch downloading from a `.txt` list
+- Updated to Python 3
+- Extracting Clyp links from saved `.html` pages
+- Optional auto-numbering
+- All downloads go into `clyp_downloads/`
 
-```
-$ python ~/clyp.py https://clyp.it/hrvttfzp
-{i} Uploader has disabled downloading. Who fucking cares.
-{*} Got song title: Sabrepulse feat. Ten Thousand Free Men & Their Families - Chiptune Night
-{*} Got mp3 url: http://a.clyp.it/hrvttfzp.mp3
-{*} Saving file to Sabrepulse feat. Ten Thousand Free Men & Their Families - Chiptune Night.mp3
-[################################] 3362/3362 - 00:00:10
-{*} Done!
-$
-```
+---
 
-## Install
-You will need the [clint](https://github.com/kennethreitz/clint) and [requests](https://github.com/kennethreitz/requests) modules for this.
+
+## Setup
 ```
 pip install -r requirements.txt
 ```
 
-## Licence
-[Licenced under the WTFPL](http://wtfpl.net)
 
-## Thanks  
-Thanks to [Sabrepulse](https://twitter.com/sabrepulse) for having tunes what were uploaded on there with the download button disabled ;)
+## Usage
 
-I do strongly suggest you actually support artists and stuff, but if you are on a box where the web-player refuses to work, nothing wrong with 'solving' the problem creatively.
+**Single track:**
+```
+    python clypdown.py https://clyp.it/abcd1234
+```
+**From a text file:**
+```
+    python clypdown.py urls.txt
+```
+With numbering:
+```
+    python clypdown.py urls.txt --number
+```
 
-## Beer?
-If you found this useful, donations to the beer/rum supply are always appreciated at the cryptocurrency bin of   ```13wUj3ZMut6uJAZKgZ4jCGz6tfqRvUzRgj```, or via [My Coinbase](https://www.coinbase.com/infodox/)
+**From a saved HTML profile page:**
+1. Open your Clyp profile and scroll all the way down
+2. Save the page as `.html`
+3. Run:
+       python clypdown.py page.html
+
+This creates `clyp_song_urls.txt` and asks if you want to download them.
+
+---
+
+All MP3s are saved into `clyp_downloads/`.
+
+---
